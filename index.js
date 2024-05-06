@@ -1,5 +1,11 @@
 const express = require('express');
 const mustacheExpress = require('mustache-express');
+require('dotenv').config();
+
+const appHost = process.env.APP_HOST;
+const appUser = process.env.APP_USER;
+const appPass = process.env.APP_PASS;
+
 
 const app = express();
 app.use(express.static('public'));
@@ -11,7 +17,6 @@ app.engine('mustache', mustacheExpress());
 app.set('view engine', 'mustache');
 app.set('views', __dirname + '/views');
 
-// Definição da lista de tarefas
 let portfolio = [];
 
 // Middleware para processar dados do formulário
@@ -23,13 +28,13 @@ app.get('/', (req, res) => {
 });
 
 // Rota para adicionar uma nova tarefa
-app.post('/tarefa', (req, res) => {
+app.post('/portfolio', (req, res) => {
     const { nome, url } = req.body;
-    const novaTarefa = { nome, url };
-    portfolio.push(novaTarefa);
+    const novoPerfil = { nome, url };
+    portfolio.push(novoPerfil);
     // Criar uma rota dinâmica para a nova tarefa
     app.get(`/${url}`, (req, res) => {
-        res.render('tarefa', { nome });
+        res.render('portfolio', { nome });
     });
     res.redirect('/');
 });

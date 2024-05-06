@@ -8,6 +8,7 @@ body {
     background-size: cover;
     margin: 0;
     font-family: AveriaLibre;
+    overflow-x: hidden;
 }
 
 header {
@@ -74,7 +75,9 @@ main {
 
 .lista {
     list-style-type: none;
-    display: flex; 
+    display: flex;
+    flex-wrap: wrap; 
+    padding: 0;
 }
 
 .lista li{
