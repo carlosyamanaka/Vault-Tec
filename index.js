@@ -12,21 +12,21 @@ app.set('view engine', 'mustache');
 app.set('views', __dirname + '/views');
 
 // Definição da lista de tarefas
-let tasks = [];
+let portfolio = [];
 
 // Middleware para processar dados do formulário
 app.use(express.urlencoded({ extended: true }));
 
 // Rota para a página inicial (lista de tarefas)
 app.get('/', (req, res) => {
-    res.render('index', { tasks: tasks });
+    res.render('index', { portfolio: portfolio });
 });
 
 // Rota para adicionar uma nova tarefa
 app.post('/tarefa', (req, res) => {
     const { nome, url } = req.body;
     const novaTarefa = { nome, url };
-    tasks.push(novaTarefa);
+    portfolio.push(novaTarefa);
     // Criar uma rota dinâmica para a nova tarefa
     app.get(`/${url}`, (req, res) => {
         res.render('tarefa', { nome });

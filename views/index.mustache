@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Receitas</title>
+    <title>Vault-Tec</title>
     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 </head>
 
 <body>
 
     <header>
-        <h1>Receit@s</h1>
+        <img src="/images/vault-svgrepo-com.svg" alt="cofre" class="icon">
+        <h1>Vault-Tec</h1>
         <form>
             <label for="login">Login:</label>
             <input type="text" id="login" name="login">
@@ -24,17 +25,16 @@
 
     <main>
         
-        <div class="area-central">
-            <h3>Sobremesa</h3>
-            <ul >
-                {{#tasks}}
-                    <li><a href="/{{url}}">{{nome}}</a></li>
-                {{/tasks}}
+        <div>
+            <ul class="lista">
+                {{#portfolio}}
+                    <li><a href="/{{url}}"><img src="/images/portfolio_project.png" alt="{{nome}}" width="260" height="260"></a></li>
+                {{/portfolio}}
             </ul>
         </div>
 
-        <div class="area-central">
-            <h2>Adicionar Nova Receita</h2>
+        <div>
+            <h2>Teste adicionar portfolio</h2>
             <form action="/tarefa" method="post">
                 <label for="nome">Nome:</label>
                 <input type="text" id="nome" name="nome">
@@ -47,7 +47,7 @@
     </main>
 
     <footer>
-        <p>RECEIT@S 2024 - TODOS OS DIREITOS RESERVADOS</p>
+        <p>VAULT-TEC 2024 - TODOS OS DIREITOS RESERVADOS</p>
     </footer>
     
 </body>

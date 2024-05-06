@@ -4,7 +4,7 @@
 }
 
 body {
-    background-image: url("/images/mediterranean-cuisine.jpg");
+    background-color: #f0f0f0;
     background-size: cover;
     margin: 0;
     font-family: AveriaLibre;
@@ -21,6 +21,7 @@ header {
 
 header h1 {
     margin: 0;
+    flex-grow: 1;
     font-size: 40px; 
 }
 
@@ -35,43 +36,53 @@ label, input, button {
 
 button {
     padding: 5px 10px; 
-    background-color: #555; 
+    background-color: #79bb81; 
     color: white; 
     border: none; 
     cursor: pointer; 
 }
 
 button:hover {
-    background-color: #777; 
+    background-color: #40b64d; 
+}
+
+.icon {
+    width: 45px;
+    height: 45px;
+    margin-right: 10px;
 }
 
 main {
     background-color: #f0f0f0;
     padding: 20px;
-    max-width: 800px;
     margin: 0 auto;
     height: 756px; /* Altura fixa */
     overflow-y: auto; /* Adiciona uma barra de rolagem vertical caso o conteúdo ultrapasse a altura */
-    display: flex;
+    display: grid;
     flex-wrap: nowrap;
     justify-content: center;
 }
 
 .area-central {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center; /* Alinha os itens no centro verticalmente */
     margin-right: 40px;
     padding: 0;   
+    border: 1px solid blue
 }
 
 .lista {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 5px 10px;
     list-style-type: none;
-    margin: 5px 0; /* Adiciona um espaçamento entre as listas */
+    display: flex; 
 }
+
+.lista li{
+    margin: 20px;
+    border: 1px solid gray;
+}
+
+
 
 footer {
     background-color: #363333;
