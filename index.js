@@ -1,5 +1,6 @@
 const express = require('express');
 const mustacheExpress = require('mustache-express');
+const session = require('express-session')
 require('dotenv').config();
 
 const appHost = process.env.APP_HOST;
@@ -22,12 +23,12 @@ let portfolio = [];
 // Middleware para processar dados do formulário
 app.use(express.urlencoded({ extended: true }));
 
-// Rota para a página inicial (lista de tarefas)
+// Rota para a página inicial
 app.get('/', (req, res) => {
     res.render('index', { portfolio: portfolio });
 });
 
-// Rota para adicionar uma nova tarefa
+// Rota para adicionar um novo perfil
 app.post('/portfolio', (req, res) => {
     const { nome, url } = req.body;
     const novoPerfil = { nome, url };
@@ -38,6 +39,14 @@ app.post('/portfolio', (req, res) => {
     });
     res.redirect('/');
 });
+
+// Sessão
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true }
+  }))
 
 // Inicialização do servidor
 app.listen(PORT, () => {
