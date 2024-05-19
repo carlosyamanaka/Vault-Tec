@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vault-Tec</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+</head>
+
+<body>
+
+    <header>
+        <img src="/images/vault-svgrepo-com.svg" alt="cofre" class="icon">
+        <h1>Vault-Tec</h1>
+        <p>Olá {{usuario}}&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <a href="/logout">Deslogar</a>
+    </header>
+
+    <main>
+        
+        <div>
+            <ul class="lista">
+                {{#portfolio}}
+                    <li><a href="/perfil/{{url}}"><img src="/images/github_logo.png" alt="{{nome}}" width="260" height="260"></a></li>
+                {{/portfolio}}
+            </ul>
+        </div>
+
+        <div>
+            <h2>Criação do perfil</h2>
+            <form action="/criarperfil" method="post">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome">
+                <label for="url">URL:</label>
+                <input type="text" id="url" name="url">
+                <input type="submit" value="Criar perfil">
+            </form>
+        </div>
+        
+    </main>
+
+    <footer>
+        <p>VAULT-TEC 2024 - TODOS OS DIREITOS RESERVADOS</p>
+    </footer>
+    
+</body>
+</html>
+

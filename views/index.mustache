@@ -12,12 +12,12 @@
     <header>
         <img src="/images/vault-svgrepo-com.svg" alt="cofre" class="icon">
         <h1>Vault-Tec</h1>
-        <form>
-            <label for="login">Login:</label>
-            <input type="text" id="login" name="login">
+        <form action="/login" method="POST">
+            <label for="exampleInputEmail1">Login</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-mail" name="email" value="{{email}}">
     
-            <label for="senha">Senha:</label>
-            <input type="password" id="senha" name="senha">
+            <label for="exampleInputPassword1">Senha</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha" name="senha">
     
             <button type="submit">Entrar</button>
         </form>
@@ -28,20 +28,9 @@
         <div>
             <ul class="lista">
                 {{#portfolio}}
-                    <li><a href="/perfil/{{url}}"><img src="/images/portfolio_project.png" alt="{{nome}}" width="260" height="260"></a></li>
+                    <li><a href="/perfil/{{url}}"><img src="/images/github_logo.png" alt="{{nome}}" width="260" height="260"></a></li>
                 {{/portfolio}}
             </ul>
-        </div>
-
-        <div>
-            <h2>Teste adicionar portfolio</h2>
-            <form action="/portfolio" method="post">
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome">
-                <label for="url">URL:</label>
-                <input type="text" id="url" name="url">
-                <input type="submit" value="Criar perfil">
-            </form>
         </div>
         
     </main>
@@ -52,4 +41,7 @@
     
 </body>
 </html>
+
+
+
 
