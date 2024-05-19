@@ -10,7 +10,7 @@ const appPass = process.env.APP_PASS;
 
 const app = express();
 app.use(express.static('public'));
-const PORT = 3000;
+const PORT = 3030;
 
 // Configuração do Mustache
 
@@ -34,8 +34,8 @@ app.post('/portfolio', (req, res) => {
     const novoPerfil = { nome, url };
     portfolio.push(novoPerfil);
     // Criar uma rota dinâmica para a nova tarefa
-    app.get(`/${url}`, (req, res) => {
-        res.render('portfolio', { nome });
+    app.get(`/perfil/${url}`, (req, res) => {
+        res.render('portfolio', { nome, url});
     });
     res.redirect('/');
 });
