@@ -3,34 +3,57 @@
     font-size: 12px;
 }
 
-body{
-    background-color: #FAFAFA;
+body {
+    background-color: #f0f0f0;
+    background-size: cover;
+    margin: 0;
+    overflow-x: hidden;
+    border: 1px solid red;
 }
 
-main {
-    display: flex;
-    flex-direction: column;
+header {
+    color: #8F8F8F; 
+    padding: 20px; 
+    display: flex; 
+    justify-content: space-between; 
     align-items: center;
+    height: 18px;
+    font-size: 16px;
+    margin-left: 20px;
 }
 
-.opcoes {
+.icon {
+    width: 60px;
+    margin-right: 10px;
+}
+
+.conteudo {
+    background: linear-gradient(to bottom, #16067C, #7D257E);
+    color: white;
+    height: 80vh;
+    padding: 60px ;
+    border: 1px solid green;
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
 }
 
 .card {
     background-color: #D9D9D9;
-    border-radius: 7px;
-    width: 250px;
-    height: 100px;
+    border-radius: 15px;
+    width: 350px;
+    height: 150px;
     padding: 5px;
     display: flex;
     align-items: center;
+    text-decoration: none;
+    color: inherit;
 }
 
 .card img {
-    width: 70px;
+    width: 120px;
     margin-right: 10px; /* Espaçamento entre a imagem e o texto */
 }
 
@@ -40,11 +63,12 @@ main {
 
 .card h3 {
     color: #8F8F8F;
-    margin-bottom: 5px; /* Espaçamento entre o título e a descrição */
+    font-size: 24px;
+    margin-bottom: 5px;
 }
 
 .card p {
-    font-size: 10px;
+    font-size: 16px;
     color: #8F8F8F;
 }
 

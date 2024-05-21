@@ -89,7 +89,7 @@ button:hover {
 .area-central {
     display: flex;
     flex-direction: row;
-    align-items: center; /* Alinha os itens no centro verticalmente */
+    align-items: center;
     margin-right: 40px;
     padding: 0;   
     border: 1px solid blue
@@ -137,20 +137,22 @@ footer {
     padding: 5px;
     display: flex;
     align-items: center;
+    text-decoration: none;
+    color: inherit; 
 }
 
 .card img {
     width: 70px;
-    margin-right: 10px; /* Espaçamento entre a imagem e o texto */
+    margin-right: 10px;
 }
 
 .card-content {
-    flex-grow: 1; /* Para ocupar todo o espaço disponível */
+    flex-grow: 1;
 }
 
 .card h3 {
     color: #8F8F8F;
-    margin-bottom: 5px; /* Espaçamento entre o título e a descrição */
+    margin-bottom: 5px;
 }
 
 .card p {
