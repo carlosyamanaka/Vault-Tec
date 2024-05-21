@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vault-Tec</title>
+    <link rel="stylesheet" type="text/css" href="/public/stylesheets/style.css">
+</head>
+
+<body>
+
+    <header>
+        <img src="/public/images/vault-tec-logo.png" alt="cofre" class="icon">
+        <h1>Vault-Tec</h1>
+        <form action="/login" method="POST">
+            <label for="exampleInputEmail1">Login</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-mail" name="email">
+    
+            <label for="exampleInputPassword1">Senha</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha" name="senha">
+    
+            <button type="submit">Entrar</button>
+            <button type="submit">Cadastrar</button>
+        </form>
+    </header>
+
+    <main>
+        
+        <div class="conteudo">
+            <div class="container">
+                <h1>Crie seu perfil e compartilhe seu portfólio de projetos.</h1>
+
+                <p>Junte-se a nós e comece a construir seu portfólio hoje mesmo. O Vault-Tec foi desenvolvido pensando em você, proporcionando uma experiência fácil e agradável na criação e gerenciamento do seu perfil profissional.</p>
+                <input type="text" width=80 class="buscar" id="busca" placeholder="Buscar" name="busca">
+            </div>
+            <div class="container">
+                <img src="/public/images/imagem_principal.png" width="430" alt="">
+            </div>
+        </div>
+
+        <div>
+            <ul class="lista">
+                
+                    <li><a href="/perfil/{{url}}"><img src="/images/github_logo.png" alt="{{nome}}" width="260" height="260"></a></li>
+               
+            </ul>
+        </div>
+        
+    </main>
+
+    <footer>
+        <p>VAULT-TEC 2024 - TODOS OS DIREITOS RESERVADOS</p>
+    </footer>
+    
+</body>
+</html>
+
+
+
+

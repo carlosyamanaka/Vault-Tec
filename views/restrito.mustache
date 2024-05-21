@@ -10,7 +10,7 @@
 <body>
 
     <header>
-        <img src="/images/vault-svgrepo-com.svg" alt="cofre" class="icon">
+         <img src="/images/vault-tec-logo.png" alt="cofre" class="icon">
         <h1>Vault-Tec</h1>
         <p>Olá {{usuario}}&nbsp;&nbsp;&nbsp;&nbsp;</p>
         <a href="/logout">Deslogar</a>
@@ -18,6 +18,34 @@
 
     <main>
         
+         <div class="conteudo">
+
+            <div class="card">
+                <a href="/perfil/{{usuario}}
+                    <img src="/images/perfil.png" alt="">
+                    <div class="card-content">
+                        <h3>Perfil</h3>
+                        <p>Gerencie seu perfil, edite e exclua</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="card">
+                <img src="/images/Segurança.png" alt="">
+                <div class="card-content">
+                    <h3>Segurança</h3>
+                    <p>Gerencie sua senha e e-mail</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="/images/Temas.png" alt="">
+                <div class="card-content">
+                    <h3>Temas</h3>
+                    <p>Selecione um tema para seu perfil</p>
+                </div>
+            </div>
+        </div>
+
         <div>
             <ul class="lista">
                 {{#portfolio}}

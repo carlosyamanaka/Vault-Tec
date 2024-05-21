@@ -10,7 +10,7 @@
 <body>
 
     <header>
-        <img src="/images/vault-svgrepo-com.svg" alt="cofre" class="icon">
+        <img src="/images/vault-tec-logo.png" alt="cofre" class="icon">
         <h1>Vault-Tec</h1>
         <form action="/login" method="POST">
             <label for="exampleInputEmail1">Login</label>
@@ -20,11 +20,24 @@
             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Senha" name="senha">
     
             <button type="submit">Entrar</button>
+            <button type="submit">Cadastrar</button>
         </form>
     </header>
 
     <main>
         
+         <div class="conteudo">
+            <div class="container">
+                <h1>Crie seu perfil e compartilhe seu portfólio de projetos.</h1>
+
+                <p>Junte-se a nós e comece a construir seu portfólio hoje mesmo. O Vault-Tec foi desenvolvido pensando em você, proporcionando uma experiência fácil e agradável na criação e gerenciamento do seu perfil profissional.</p>
+                <input type="text" width=80 class="buscar" id="busca" placeholder="Buscar" name="busca">
+            </div>
+            <div class="container">
+                <img src="/images/imagem_principal.png" width="700" alt="">
+            </div>
+        </div>
+
         <div>
             <ul class="lista">
                 {{#portfolio}}
