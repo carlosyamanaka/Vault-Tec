@@ -1,0 +1,98 @@
+@font-face {
+    font-family: "AveriaLibre";
+    src: url("/fonts/AveriaLibre-Regular.ttf");
+}
+
+body {
+    background-color: #f0f0f0;
+    background-size: cover;
+    margin: 0;
+    font-family: sans-serif;
+    overflow-x: hidden;
+}
+
+header {
+    color: #ffffff; 
+    padding: 20px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    height: 18px;
+    font-size: 16px;
+    margin-left: 20px;
+}
+
+header h1 {
+    margin: 0;
+    flex-grow: 1;
+    font-size: 25px; 
+}
+
+footer {
+    background-color: #363333;
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    padding: 1px;
+}
+
+footer p {
+    font-size: 12px;    
+}
+
+.icon {
+    width: 60px;
+    margin-right: 10px;
+}
+
+
+.verPerfilContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.informacoes {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin-left: 10rem;
+    margin-top: 1rem;
+}
+
+#perfilNome {
+    font-size: 32px;
+    margin: 1.7;
+}
+
+.tituloTopicos {
+    font-size: 20px;
+    margin: 0;
+}
+
+.topico {
+    font-size: 12px;
+    margin: 1;
+}
+
+.lateralicons {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 2rem 0 2rem 5rem;
+}
+
+.lateralicons .perfilFoto {
+    width: 300px;
+}
+
+.perfilIcons {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    justify-content: space-around;
+    margin-top: 1.5rem;
+}
+
+.perfilIcons .perfilIcon {
+    width: 50px;
+}

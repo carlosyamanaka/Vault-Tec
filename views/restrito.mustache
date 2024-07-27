@@ -10,17 +10,21 @@
 <body>
 
     <header>
-         <img src="/images/vault-tec-logo.png" alt="cofre" class="icon">
+        <div class="header-container">
+            <a href="http://localhost:3000"><img src="/images/vault-tec-logo.png" alt="cofre" class="icon"></a>   
         <h1>Vault-Tec</h1>
-        <p>Olá {{usuario}}&nbsp;&nbsp;&nbsp;&nbsp;</p>
-        <a href="/logout">Deslogar</a>
+        </div>
+        <div class="header-container">
+            <p>Olá {{usuario}}&nbsp;&nbsp;&nbsp;&nbsp;</p>
+            <a href="/logout">Deslogar</a>
+        </div>
     </header>
 
     <main>
         
          <div class="conteudo">
 
-            <a href="/perfil" class="card">
+            <a href="/criarperfil" class="card">
                 <img src="/images/perfil.png" alt="">
                 <div class="card-content">
                     <h3>Perfil</h3>
@@ -45,26 +49,7 @@
             </a>
 
         </div>
-
-        <div>
-            <ul class="lista">
-                {{#portfolio}}
-                    <li><a href="/perfil/{{url}}"><img src="/images/github_logo.png" alt="{{nome}}" width="260" height="260"></a></li>
-                {{/portfolio}}
-            </ul>
-        </div>
-
-        <div>
-            <h2>Criação do perfil</h2>
-            <form action="/criarperfil" method="post">
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome">
-                <label for="url">URL:</label>
-                <input type="text" id="url" name="url">
-                <input type="submit" value="Criar perfil">
-            </form>
-        </div>
-        
+  
     </main>
 
     <footer>

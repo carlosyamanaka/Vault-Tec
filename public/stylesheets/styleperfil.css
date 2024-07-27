@@ -8,18 +8,31 @@ body {
     background-size: cover;
     margin: 0;
     overflow-x: hidden;
-    border: 1px solid red;
 }
 
 header {
     color: #8F8F8F; 
     padding: 20px; 
     display: flex; 
+    flex-direction: row;
     justify-content: space-between; 
     align-items: center;
     height: 18px;
     font-size: 16px;
     margin-left: 20px;
+}
+
+.header-container a {
+    text-decoration: none;
+    color: #8F8F8F;
+}
+
+.header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
 }
 
 .icon {
@@ -30,9 +43,8 @@ header {
 .conteudo {
     background: linear-gradient(to bottom, #16067C, #7D257E);
     color: white;
-    height: 80vh;
+    height: 82vh;
     padding: 60px ;
-    border: 1px solid green;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -70,6 +82,18 @@ header {
 .card p {
     font-size: 16px;
     color: #8F8F8F;
+}
+
+footer {
+    background-color: #363333;
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    padding: 1px;
+}
+
+footer p {
+    font-size: 12px;    
 }
 
 

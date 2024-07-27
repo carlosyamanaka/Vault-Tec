@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const Acesso = require('../helpers/acesso')
-const Eventos = require('../models/Evento')
+const Eventos = require('../models/apagardps')
 const Usuario = require('../models/Usuario')
 
 let portfolio = [];
@@ -25,6 +25,10 @@ router.get("/intranet", Acesso.estaLogado, (req, res) => {
                             isAdmin: Usuario.isAdmin(req.session.user),
                             portfolio: portfolio})
 })
+
+router.get('/criarperfil', Acesso.estaLogado, (req, res) => {
+    res.render('perfil');
+}); 
 
 router.post("/criarperfil", Acesso.estaLogado, (req, res) => {
     const { nome, url } = req.body;

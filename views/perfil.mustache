@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Perfil de {{nome}}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=2.0">
+    <title>Criação de perfil</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/styleform.css">
 </head>
 <body>
-    <h1>{{nome}}</h1>
-    <p>Este é o portfólio de {{nome}}.</p>
-
-    <p>Esse perfil pode ser acessado pelo link: localhost:3000/perfil/{{url}}</p>
+ 
     <a href="/intranet?login=1">Voltar para página anterior</a>
 
     <header>
@@ -19,7 +19,7 @@
         <p>Preencha com suas informações</p>
 
         <div>
-            <form action="">
+            <form action="/criarperfil" method="post">
                 <fieldset class="form-perfil">
                     <div class="form-nome">
                         <div class="form-group">
@@ -41,7 +41,7 @@
                         <label for="experiencia" class="form-label">Experiência</label>
                     </div>
                     <div class="form-tec">
-                        <label for="tecnologia">Tecnologias</label></br>
+                        <label for="tecnologia" class="tec-label">Tecnologias</label></br>
                         <input type="checkbox" id="tecnologia1" name="tecnologia1" value="HTML">
                         <label for="tecnologia1">HTML</label>
                         <input type="checkbox" id="tecnologia2" name="tecnologia2" value="CSS">
@@ -95,16 +95,14 @@
                         <label for="pgithub" class="form-label">Github</label>
                     </div>
                 </fieldset>
+                <div class="center-button">
+                    <button>Criar</button>
+                </div>
             </form>
             
         </div>
 
     </main>
-
-    <footer>
-
-
-    </footer>
 </body>
 </html>
 
