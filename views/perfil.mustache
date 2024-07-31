@@ -2,108 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=2.0">
-    <title>Criação de perfil</title>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/styleform.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/styleverperfil.css">
+    <title>Perfil</title>
 </head>
 <body>
- 
-    <a href="/intranet?login=1">Voltar para página anterior</a>
-
     <header>
-
+        <a href="http://localhost:3000"><img src="/images/vault-tec-logo.png" alt="logo-vault-tec" class="icon"></a>
     </header>
 
     <main>
-        <h1>PERFIL</h1>
-        <p>Preencha com suas informações</p>
-
-        <div>
-            <form action="/criarperfil" method="post">
-                <fieldset class="form-perfil">
-                    <div class="form-nome">
-                        <div class="form-group">
-                            <input type="text" id="nome" name="nome" class="form-input" required>
-                            <label for="nome" class="form-label">Nome</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" id="sobrenome" name="sobrenome" class="form-input" required>
-                            <label for="sobrenome" class="form-label">Sobrenome</label>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <textarea id="resumo" name="resumo" class="form-input" rows="4" required></textarea>
-                        <label for="resumo" class="form-label">Resumo profissional</label>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="experiencia" name="experiencia" class="form-input" rows="4" required></textarea>
-                        <label for="experiencia" class="form-label">Experiência</label>
-                    </div>
-                    <div class="form-tec">
-                        <label for="tecnologia" class="tec-label">Tecnologias</label></br>
-                        <input type="checkbox" id="tecnologia1" name="tecnologia1" value="HTML">
-                        <label for="tecnologia1">HTML</label>
-                        <input type="checkbox" id="tecnologia2" name="tecnologia2" value="CSS">
-                        <label for="tecnologia2">CSS</label>
-                        <input type="checkbox" id="tecnologia3" name="tecnologia3" value="Javascript">
-                        <label for="tecnologia3">Javascript</label>
-                        <input type="checkbox" id="tecnologia4" name="tecnologia4" value="Python">
-                        <label for="tecnologia4">Python</label>
-                        <input type="checkbox" id="tecnologia5" name="tecnologia5" value="Java">
-                        <label for="tecnologia5">Java</label>
-                        <input type="checkbox" id="tecnologia6" name="tecnologia6" value="Swift">
-                        <label for="tecnologia6">Swift</label>
-                        <input type="checkbox" id="tecnologia7" name="tecnologia7" value="C">
-                        <label for="tecnologia7">C</label>
-                    </div></br>
-                    <div class="form-group">
-                        <input type="url" id="linkedin" name="linkedin" class="form-input" required>
-                        <label for="linkedin" class="form-label">Linkedin</label>
-                    </div>
-                    <div class="form-group">
-                        <input type="url" id="github" name="github" class="form-input" required>
-                        <label for="github" class="form-label">Github</label>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" class="form-input" required>
-                        <label for="email" class="form-label">E-mail</label>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="url" name="url" class="form-input" required>
-                        <label for="url" class="form-label">URL</label>
-                    </div>
-                </fieldset>
-            
-                <h2>Projetos</h2>
-            
-                <fieldset class="form-projeto">
-                    <div class="form-group">
-                        <input type="text" name="pnome" id="pnome" class="form-input" required>
-                        <label for="pnome" class="form-label">Nome</label>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="descricao" name="descricao" class="form-input" rows="4" required></textarea>
-                        <label for="descricao" class="form-label">Descrição</label>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="ptecnologias" id="ptecnologias" class="form-input" required>
-                        <label for="ptecnologias" class="form-label">Tecnologias</label>
-                    </div>
-                    <div class="form-group">
-                        <input type="url" name="pgithub" id="pgithub" class="form-input" required>
-                        <label for="pgithub" class="form-label">Github</label>
-                    </div>
-                </fieldset>
-                <div class="center-button">
-                    <button>Criar</button>
+        <div class="verPerfilContainer">
+            <div class="lateralicons">
+                <img src="/images/github_logo.png" alt="Foto" class="perfilFoto">
+                <div class="perfilIcons">
+                    <a href="{{ linkedin }}"><img src="/images/linkedin_logo.png" alt="Linkedin" class="perfilIcon"></a>
+                    <a href="{{ github }}"><img src="/images/github_logo.png" alt="Github" class="perfilIcon"></a>
+                    <a href="mailto:{{ email }}"><img src="/images/email_logo.png" alt="e-mail" class="perfilIcon"></a>
                 </div>
-            </form>
-            
+            </div>
+            <div class="informacoes">
+                <h1 id="perfilNome">{{nome}} {{sobrenome}}</h1>
+                <h2 class="tituloTopicos">Resumo</h2>
+                <p class="topico">{{resumo}}</p>
+                <h2 class="tituloTopicos">Experiência</h2>
+                <p class="topico">{{experiencia}}</p>
+            </div>
+            <div>
+                <h2 class="tituloTopicos">Projeto</h2>
+                <p>{{pnome}}</p>
+                <p>{{descricao}}</p>
+                <p>{{ptecnologias}}</p>
+                <p><<pgithub>></p>
+            </div>
         </div>
-
     </main>
+
+    <footer>
+        <p>VAULT-TEC 2024 - TODOS OS DIREITOS RESERVADOS</p>
+    </footer>
 </body>
 </html>
-
-

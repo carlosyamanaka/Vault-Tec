@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=2.0">
+    <title>Criação de perfil</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/styleform.css">
+</head>
+<body>
+ 
+    <a href="/intranet?login=1">Voltar para página anterior</a>
+
+    <header>
+
+    </header>
+
+    <main>
+        <h1>PERFIL</h1>
+        <p>Preencha com suas informações</p>
+
+        <div>
+            <form action="/criarperfil" method="post">
+                <fieldset class="form-perfil">
+                    <div class="form-nome">
+                        <div class="form-group">
+                            <input type="text" id="nome" name="nome" class="form-input" required>
+                            <label for="nome" class="form-label">Nome</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="sobrenome" name="sobrenome" class="form-input" required>
+                            <label for="sobrenome" class="form-label">Sobrenome</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea id="resumo" name="resumo" class="form-input" rows="4" required></textarea>
+                        <label for="resumo" class="form-label">Resumo profissional</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="experiencia" name="experiencia" class="form-input" rows="4" required></textarea>
+                        <label for="experiencia" class="form-label">Experiência</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="url" id="linkedin" name="linkedin" class="form-input" required>
+                        <label for="linkedin" class="form-label">Linkedin</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="url" id="github" name="github" class="form-input" required>
+                        <label for="github" class="form-label">Github</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" class="form-input" required>
+                        <label for="email" class="form-label">E-mail</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="url" name="url" class="form-input" required>
+                        <label for="url" class="form-label">URL</label>
+                    </div>
+                </fieldset>
+            
+                <h2>Principal projeto</h2>
+            
+                <fieldset class="form-projeto">
+                    <div class="form-group">
+                        <textarea type="text" name="pnome" id="pnome" class="form-input" required>
+                        <label for="pnome" class="form-label">Nome</label>
+                    </div>
+                </fieldset>
+                <div class="center-button">
+                    <button>Criar</button>
+                </div>
+            </form>
+            
+        </div>
+
+    </main>
+</body>
+</html>
+
+

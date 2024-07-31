@@ -19,24 +19,24 @@ router.get("/", (req, res) => {
         portfolio: portfolio})
 })
 
-router.get("/intranet", Acesso.estaLogado, (req, res) => {
-    res.render("restrito", {eventos: Eventos.privados(), 
+router.get("/hub", Acesso.estaLogado, (req, res) => {
+    res.render("hub", {eventos: Eventos.privados(), 
                             usuario: req.session.user.nome, 
                             isAdmin: Usuario.isAdmin(req.session.user),
                             portfolio: portfolio})
 })
 
 router.get('/criarperfil', Acesso.estaLogado, (req, res) => {
-    res.render('perfil');
+    res.render('criarPerfil');
 }); 
 
 router.post("/criarperfil", Acesso.estaLogado, (req, res) => {
-    const { nome, url } = req.body;
-    const novoPerfil = { nome, url };
+    const { nome, sobrenome, resumo, experiencia, linkedin, github, email, url, projeto } = req.body;
+    const novoPerfil = { nome, sobrenome, resumo, experiencia, linkedin, github, email, url, projeto };
     console.log('Criando perfil')
     // Adiciona o novo perfil à lista de perfis
     portfolio.push(novoPerfil);
-    res.redirect('/intranet?login=1');
+    res.redirect(`/perfil/${novoPerfil.url}`);
 });
 
 router.get("/perfil/:url", (req, res) => {
@@ -45,7 +45,17 @@ router.get("/perfil/:url", (req, res) => {
     if (!perfil) {
         return res.status(404).send('Perfil não encontrado');
     }
-    res.render('perfil', { nome: perfil.nome, url });
+    res.render('perfil', { 
+        nome: perfil.nome,
+        sobrenome: perfil.sobrenome,
+        resumo: perfil.resumo,
+        experiencia: perfil.experiencia,
+        linkedin: perfil.linkedin,
+        github: perfil.github,
+        email: perfil.email,
+        url: perfil.url, 
+        projeto: perfil.projeto
+    });
 });
 
 router.get("/admin", Acesso.ehAdmin, (req, res) => {

@@ -14,7 +14,7 @@ login = function (req, res, next) {
     res.redirect("/?login=1");
   } else {
     req.session.user = usuario;
-    res.redirect("/intranet?login=1");
+    res.redirect("/hub?login=1");
   }
 };
 
