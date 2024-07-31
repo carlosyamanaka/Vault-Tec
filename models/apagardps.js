@@ -6,6 +6,7 @@ module.exports = {
             "Apresentação do trabalho da disciplina 1",
             "Leitura do livro da semana"
         ]
+        // mustache.render
     },
     privados: function() {
         return [
@@ -13,6 +14,7 @@ module.exports = {
             "Inauguração do site",
             "Participação da maratona"
         ]
+        // mustache.render
     },
     todos: function() {
         return this.publicos().concat(this.privados())

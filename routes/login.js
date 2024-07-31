@@ -2,21 +2,8 @@ const Toastify = require("toastify-js");
 const express = require("express");
 const router = express.Router();
 
-const Usuario = require("../models/Usuario");
-
-login = function (req, res, next) {
-  let { email, senha } = req.body;
-  let usuario = Usuario.getByLogin(email, senha);
-  if (usuario == null) {
-    req.session.messages = ["Falha ao realizar o login."];
-    
-      
-    res.redirect("/?login=1");
-  } else {
-    req.session.user = usuario;
-    res.redirect("/hub?login=1");
-  }
-};
+const Acesso = require("../helpers/acesso");
+const Eventos = require("../models/apagardps");
 
 let salvaUsuario = function (req, res, next) {
   if (req.body.lembrar) {
@@ -27,12 +14,37 @@ let salvaUsuario = function (req, res, next) {
   return next();
 };
 
-let logout = function (req, res, next) {
-  req.session.user = null;
-  res.redirect("/");
-};
+router.post("/login", salvaUsuario, Acesso.login);
+router.get("/logout", Acesso.logout);
 
-router.post("/login", salvaUsuario, login);
-router.get("/logout", logout);
+
+router.get("/", (req, res) => {
+  let error = "";
+  if (req.session.messages != undefined) {
+    error = req.session.messages.pop();
+  }
+  res.render("index", {
+    eventos: Eventos.publicos(),
+    email: req.cookies.email,
+    error: error,
+    portfolio: portfolio,
+  });
+});
+
+router.get("/hub", Acesso.estaLogado, (req, res) => {
+  res.render("hub", {
+    eventos: Eventos.privados(),
+    usuario: req.session.user.nome,
+    isAdmin: Usuario.isAdmin(req.session.user),
+    portfolio: portfolio,
+  });
+});
+
+//Mexer!
+router.get("/admin", Acesso.ehAdmin, (req, res) => {
+  res.render("admin", { eventos: Eventos.todos(), usuario: "Admin" });
+}); 
+
+router.get("/loginautomatico", Acesso.login);
 
 module.exports = router;

@@ -18,15 +18,26 @@ module.exports = {
         }
 
         if (logged) {
-            res.redirect("/intranet")
+            res.redirect("/hub")
         } else {
             req.session.messages = ["Sem autorização"]
             res.redirect("/")
         }
     },
-    login: function(req, res, next) {
-        let usuario = Usuario.getByEmail(process.env.ADMIN)
-        req.session.user = usuario
-        res.redirect("/admin")
-    }
+    login: function (req, res, next) { //Metodo de login
+        let { email, senha } = req.body;
+        let usuario = Usuario.getByLogin(email, senha);
+        if (usuario == null) {
+            req.session.messages = ["Falha ao realizar o login."];
+            
+            res.redirect("/?login=1");
+        } else {
+            req.session.user = usuario;
+            res.redirect("/hub?login=1");
+        }
+    },
+    logout: function (req, res, next) {
+        req.session.user = null;
+        res.redirect("/");
+    },
 }
