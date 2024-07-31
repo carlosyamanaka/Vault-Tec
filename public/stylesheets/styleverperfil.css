@@ -6,7 +6,7 @@
 body {
     background-color: #f0f0f0;
     background-size: cover;
-    margin: 0;
+    margin: 0 auto;
     font-family: sans-serif;
     overflow-x: hidden;
 }
@@ -28,6 +28,22 @@ header h1 {
     font-size: 25px; 
 }
 
+.icon {
+    width: 60px;
+    margin-right: 10px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+}
+
 footer {
     background-color: #363333;
     color: white;
@@ -40,49 +56,21 @@ footer p {
     font-size: 12px;    
 }
 
-.icon {
-    width: 60px;
-    margin-right: 10px;
-}
-
-
-.verPerfilContainer {
+.perfil-container {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    width: 70%;
+    border-bottom: 1px solid black;  
 }
 
-.informacoes {
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-    margin-left: 10rem;
-    margin-top: 1rem;
+.perfil-images {
+    width: 30%; 
+    padding: 1.5em;
 }
 
-#perfilNome {
-    font-size: 32px;
-    margin: 1.7;
-}
-
-.tituloTopicos {
-    font-size: 20px;
-    margin: 0;
-}
-
-.topico {
-    font-size: 12px;
-    margin: 1;
-}
-
-.lateralicons {
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-    margin: 2rem 0 2rem 5rem;
-}
-
-.lateralicons .perfilFoto {
-    width: 300px;
+.perfil-foto {
+    width: 100%
 }
 
 .perfilIcons {
@@ -95,4 +83,56 @@ footer p {
 
 .perfilIcons .perfilIcon {
     width: 50px;
+}
+
+.perfil-info {
+    width: 70%; 
+    padding: 1.5em;
+}
+
+#perfil-nome {
+    color: #4B5BF2;
+}
+
+.titulo-topicos {
+    font-size: 1.2em;
+}
+
+.topico-info {
+    font-size: 1.1em;
+    text-align: justify;
+}
+
+.projeto-container {
+    width: 70%;
+    display: flex;
+    flex-direction: column;   
+}
+
+.projeto-titulo {
+    text-align: center;
+}
+
+.projeto-workspace {
+    padding: 1.5em;
+}
+
+.projeto-workspace h2 {
+    font-size: 2em;
+    color: #4B5BF2;
+}
+
+.projeto-workspace p {
+    font-size: 1.3em;
+    color: #000000;
+}
+
+.projeto-workspace a {
+    font-size: 1.1em;
+    color: #4B5BF2;
+}
+
+.projeto-workspace li {
+    font-size: 1.1em;
+    color: #000000;
 }
