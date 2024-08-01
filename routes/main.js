@@ -4,8 +4,7 @@ const Joi = require("joi");
 
 const Acesso = require("../helpers/acesso");
 const Usuario = require("../models/Usuario");
-
-let portfolio = [];
+const Perfil = require("../models/Perfil");
 
 const perfilSchema = Joi.object({
   id: Joi.number(),
@@ -25,40 +24,60 @@ router.get('/criarperfil', Acesso.estaLogado, (req, res) => {
 }); 
 
 router.post("/criarperfil", Acesso.estaLogado, (req, res) => {
-    const {nome, sobrenome, resumo, experiencia, linkedin, github, email, url, projeto } = req.body;
-    const novoPerfil = { nome, sobrenome, resumo, experiencia, linkedin, github, email, url, projeto };
-    
-    const validation = perfilSchema.validate(req.body, { abortEarly: false });
-    if (validation.error) {
-      const errors = validation.error.details.map((detail) => detail.message);
-      return res.status(422).send(errors);
-    }
-    console.log('Criando perfil')
+  //Dados recebidos do formulário
+  const {
+    nome,
+    sobrenome,
+    resumo,
+    experiencia,
+    linkedin,
+    github,
+    email,
+    url,
+    projeto,
+  } = req.body;
+
+  const validation = perfilSchema.validate(req.body, { abortEarly: false });
+  if (validation.error) {
+    const errors = validation.error.details.map((detail) => detail.message);
+    return res.status(422).send(errors);
+  }
+
+  let perfil = Perfil.checkPerfilExists(url); //Se for uma url já existente vai ocorrer uma edição
+  if (perfil) {
+    Perfil.updateProfile(
+      nome,
+      sobrenome,
+      resumo,
+      experiencia,
+      linkedin,
+      github,
+      email,
+      url,
+      projeto
+    );
+    res.redirect(`/perfil/${perfil.url}`);
+  } else {
+    console.log("Criando novo perfil");
+    Perfil.newProfile(
+      nome,
+      sobrenome,
+      resumo,
+      experiencia,
+      linkedin,
+      github,
+      email,
+      url,
+      projeto,
+    );
     // Adiciona o novo perfil à lista de perfis
-    let perfil = portfolio.find((perfil) => perfil.url === url)
-    if (perfil) {
-        //Tá com erro aqui, to tentando sobreescrever mas ele ta falando q n eh possivel apos enviar ao cliente
-        portfolio[perfil.id] = {
-          nome: nome,
-          sobrenome: sobrenome,
-          resumo: resumo,
-          experiencia: experiencia,
-          linkedin: linkedin,
-          github: github,
-          email: email,
-          url: url,
-          projeto: projeto,
-        };
-        res.redirect(`/perfil/${perfil.url}`);
-    } else {
-        portfolio.push(novoPerfil);
-        res.redirect(`/perfil/${novoPerfil.url}`);
-    }
+    res.redirect(`/perfil/${url}`);
+  }
 });
 
 router.get("/perfil/:url", (req, res, next) => {
     const { url } = req.params; //URL TÁ AQUI
-    const perfil = portfolio.find(perfil => perfil.url === url);
+    let perfil = Perfil.checkPerfilExists(url);
     if (!perfil) {
         return res.status(404).send('Perfil não encontrado');
     }
@@ -84,7 +103,7 @@ router.get("/", (req, res) => {
   res.render("index", {
     email: req.cookies.email,
     error: error,
-    portfolio: portfolio,
+    portfolio: Perfil.listProfiles()
   });
 });
 
@@ -92,13 +111,13 @@ router.get("/hub", Acesso.estaLogado, (req, res) => {
   res.render("hub", {
     usuario: req.session.user.nome,
     isAdmin: Usuario.isAdmin(req.session.user),
-    portfolio: portfolio,
+    portfolio: Perfil.listProfiles()
   });
 });
 
 router.get("/editarPerfil/:url", Acesso.estaLogado, (req, res) => {
   const { url } = req.params; //URL TÁ AQUI
-  const perfil = portfolio.find((perfil) => perfil.url === url);
+  let perfil = Perfil.checkPerfilExists(url)
   if (!perfil) {
     return res.status(404).send("Perfil não encontrado");
   }
@@ -111,9 +130,17 @@ router.get("/editarPerfil/:url", Acesso.estaLogado, (req, res) => {
     linkedin: perfil.linkedin,
     github: perfil.github,
     email: perfil.email,
-    url: perfil.url, //Deixar a url inalterável
+    url: perfil.url,
+    readonly: "readonly", //URL inalteravel na edição
     projeto: perfil.projeto,
   });
+})
+
+router.get("/excluirperfil/:url", Acesso.estaLogado, (req, res) => {
+  const { url } = req.params;
+  Perfil.deleteProfile(url);
+  console.log("Perfil excluido");
+  res.redirect("/");
 })
 
 module.exports = router

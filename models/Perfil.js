@@ -1,4 +1,3 @@
-let ids = 0;
 let profiles = [];
 
 module.exports = {
@@ -14,7 +13,6 @@ module.exports = {
     projeto
   ) {
     let profile = {
-      id: ++ids,
       nome: nome,
       sobrenome: sobrenome,
       resumo: resumo,
@@ -30,7 +28,6 @@ module.exports = {
   },
 
   updateProfile(
-    id,
     nome,
     sobrenome,
     resumo,
@@ -38,9 +35,10 @@ module.exports = {
     linkedin,
     github,
     email,
+    url,
     projeto
   ) {
-    let pos = this.getPositionById(id);
+    let pos = this.getPositionByUrl(url);
     if (pos >= 0) {
       let profile = profiles[pos];
       profile.nome = nome;
@@ -51,6 +49,8 @@ module.exports = {
       profile.github = github;
       profile.email = email;
       profile.projeto = projeto;
+    } else {
+      console.log("Perfil não encontrado")
     }
   },
 
@@ -58,31 +58,14 @@ module.exports = {
     return profiles;
   },
 
-  getProfileById(id) {
-    let pos = this.getPositionById(id);
-    if (pos >= 0) {
-      return profiles[pos];
-    }
-    return null;
-  },
-
-  getPositionById(id) {
-    for (let i = 0; i < profiles.length; i++) {
-      if (profiles[i].id == id) {
-        return i;
-      }
-    }
-    return -1;
-  },
-
-  deleteProfile(id) {
-    let i = this.getPositionById(id);
+  deleteProfile(url) {
+    let i = this.getPositionByUrl(url);
     if (i >= 0) {
       profiles.splice(i, 1);
       return true;
     }
     return false;
-    },
+  },
 
   getProfileByUrl(url) {
     for (let i = 0; i < profiles.length; i++) {
@@ -92,5 +75,18 @@ module.exports = {
     }
     return null;
   },
+
+  getPositionByUrl(url) {
+    for (let i = 0; i < profiles.length; i++) {
+      if (profiles[i].url == url) {
+        return i;
+      }
+    }
+    return -1;
+  },
+
+  checkPerfilExists(url) {
+    return profiles.find((perfil) => perfil.url === url);
+  }
 };
 
