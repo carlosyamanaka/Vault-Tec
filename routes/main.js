@@ -3,6 +3,9 @@ const router = express.Router()
 const Joi = require("joi");
 
 const Acesso = require("../helpers/acesso");
+const Perfil = require('../models/Perfil');
+const Eventos = require("../models/apagardps");
+const Usuario = require("../models/Usuario");
 
 let portfolio = [];
 
@@ -26,6 +29,7 @@ router.get('/criarperfil', Acesso.estaLogado, (req, res) => {
 router.post("/criarperfil", Acesso.estaLogado, (req, res) => {
     const { nome, sobrenome, resumo, experiencia, linkedin, github, email, url, projeto } = req.body;
     const novoPerfil = { nome, sobrenome, resumo, experiencia, linkedin, github, email, url, projeto };
+    
     const validation = perfilSchema.validate(req.body, { abortEarly: false });
     if (validation.error) {
       const errors = validation.error.details.map((detail) => detail.message);
@@ -37,8 +41,8 @@ router.post("/criarperfil", Acesso.estaLogado, (req, res) => {
     res.redirect(`/perfil/${novoPerfil.url}`);
 });
 
-router.get("/perfil/:url", (req, res) => {
-    const { url } = req.params;
+router.get("/perfil/:url", (req, res, next) => {
+    const { url } = req.params; //URL TÁ AQUI
     const perfil = portfolio.find(perfil => perfil.url === url);
     if (!perfil) {
         return res.status(404).send('Perfil não encontrado');
@@ -54,6 +58,28 @@ router.get("/perfil/:url", (req, res) => {
         url: perfil.url, 
         projeto: perfil.projeto
     });
+});
+
+router.get("/", (req, res) => {
+  let error = "";
+  if (req.session.messages != undefined) {
+    error = req.session.messages.pop();
+  }
+  res.render("index", {
+    eventos: Eventos.publicos(),
+    email: req.cookies.email,
+    error: error,
+    portfolio: portfolio,
+  });
+});
+
+router.get("/hub", Acesso.estaLogado, (req, res) => {
+  res.render("hub", {
+    eventos: Eventos.privados(),
+    usuario: req.session.user.nome,
+    isAdmin: Usuario.isAdmin(req.session.user),
+    portfolio: portfolio,
+  });
 });
 
 module.exports = router

@@ -1,7 +1,7 @@
 module.exports = {
     getByLogin: function(email, senha) {
         let usuario = email.substr(0, email.indexOf('@'))
-        if (usuario != "" && usuario == process.env.SENHA) {
+        if (usuario != "") {
           return { id: this.toId(email), email: email, nome: usuario };
         }
         return null;

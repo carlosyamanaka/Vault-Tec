@@ -27,13 +27,14 @@ module.exports = {
     login: function (req, res, next) { //Metodo de login
         let { email, senha } = req.body;
         let usuario = Usuario.getByLogin(email, senha);
-        if (usuario == null) {
-            req.session.messages = ["Falha ao realizar o login."];
-            
-            res.redirect("/?login=1");
-        } else {
+        if (usuario == process.env.ADMIN || senha == process.env.SENHA) {
             req.session.user = usuario;
             res.redirect("/hub?login=1");
+        } else {
+            console.log("falha")
+          req.session.messages = ["Falha ao realizar o login."];
+
+          res.redirect("/?login=1");
         }
     },
     logout: function (req, res, next) {

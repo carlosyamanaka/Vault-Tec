@@ -1,4 +1,3 @@
-const Toastify = require("toastify-js");
 const express = require("express");
 const router = express.Router();
 
@@ -16,29 +15,6 @@ let salvaUsuario = function (req, res, next) {
 
 router.post("/login", salvaUsuario, Acesso.login);
 router.get("/logout", Acesso.logout);
-
-
-router.get("/", (req, res) => {
-  let error = "";
-  if (req.session.messages != undefined) {
-    error = req.session.messages.pop();
-  }
-  res.render("index", {
-    eventos: Eventos.publicos(),
-    email: req.cookies.email,
-    error: error,
-    portfolio: portfolio,
-  });
-});
-
-router.get("/hub", Acesso.estaLogado, (req, res) => {
-  res.render("hub", {
-    eventos: Eventos.privados(),
-    usuario: req.session.user.nome,
-    isAdmin: Usuario.isAdmin(req.session.user),
-    portfolio: portfolio,
-  });
-});
 
 //Mexer!
 router.get("/admin", Acesso.ehAdmin, (req, res) => {
