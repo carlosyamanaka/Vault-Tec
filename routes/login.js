@@ -15,6 +15,4 @@ let salvaUsuario = function (req, res, next) { //Salvando a sessao nos cookies
 router.post("/login", salvaUsuario, Acesso.login);
 router.get("/logout", Acesso.logout);
 
-router.get("/loginautomatico", Acesso.login);
-
 module.exports = router;

@@ -1,7 +1,9 @@
 let profiles = [];
 
+//Utilizei o URL como ID, pois ele é único
+
 module.exports = {
-  newProfile(
+  newProfile( //Criar novo perfil
     nome,
     sobrenome,
     resumo,
@@ -27,7 +29,7 @@ module.exports = {
     return profile;
   },
 
-  updateProfile(
+  updateProfile( //Editar perfil
     nome,
     sobrenome,
     resumo,
@@ -54,11 +56,11 @@ module.exports = {
     }
   },
 
-  listProfiles() {
+  listProfiles() { //Listar todos os perfis
     return profiles;
   },
 
-  deleteProfile(url) {
+  deleteProfile(url) { //Deletar perfil pela url
     let i = this.getPositionByUrl(url);
     if (i >= 0) {
       profiles.splice(i, 1);
@@ -67,7 +69,7 @@ module.exports = {
     return false;
   },
 
-  getProfileByUrl(url) {
+  getProfileByUrl(url) { //Puxar os dados do perfil pela url
     for (let i = 0; i < profiles.length; i++) {
       if (url == profiles[i].url) {
         return profiles[i];
@@ -76,7 +78,7 @@ module.exports = {
     return null;
   },
 
-  getPositionByUrl(url) {
+  getPositionByUrl(url) { //Puxar a posição do perfil pela url
     for (let i = 0; i < profiles.length; i++) {
       if (profiles[i].url == url) {
         return i;
@@ -85,7 +87,7 @@ module.exports = {
     return -1;
   },
 
-  checkPerfilExists(url) {
+  checkPerfilExists(url) { //Verificar se a url é uma existente, utilizado para identificar se vai ocorrer uma edição ou criação de novo Perfil
     return profiles.find((perfil) => perfil.url === url);
   }
 };

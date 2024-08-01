@@ -1,18 +1,18 @@
 module.exports = {
-    getByLogin: function(email, senha) {
-        let usuario = email.substr(0, email.indexOf('@'))
-        if (usuario != "") {
-          return { id: this.toId(email), email: email, nome: usuario };
-        }
-        return null;
+    getByLogin: function(email, senha) { //Coletar os dados pelo login
+      let usuario = email.substr(0, email.indexOf("@")); //Coletei o nome do usuario a partir da primeira parte do email
+      if (usuario != "") {
+        return { id: this.toId(email), email: email, nome: usuario };
+      }
+      return null;
     },
 
-    getByEmail: function(email) {
-        let usuario = email.substr(0, email.indexOf('@'))
-        return {id:this.toId(email), email: email, nome: usuario}
+    getByEmail: function(email) { //Coletar os dados pelo Email
+      let usuario = email.substr(0, email.indexOf("@")); //Coletei o nome do usuario a partir da primeira parte do email
+      return { id: this.toId(email), email: email, nome: usuario };
     },
 
-    isAdmin: function(usuario) {
+    isAdmin: function(usuario) { //Verificar se é admin
         let email = usuario.email
         return email == process.env.ADMIN
     },
