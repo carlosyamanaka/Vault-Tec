@@ -31,9 +31,11 @@ app.use(session({
 //Rotas
 const mainRouter = require('./routes/main')
 const loginRouter = require('./routes/login')
+const imagesRouter = require("./routes/uploadImages");
 
 app.use("/", loginRouter)
 app.use("/", mainRouter)
+app.use("/", imagesRouter)
 
 app.listen(process.env.PORT, () => {
     console.log('Servidor online na porta 3000')

@@ -14,7 +14,11 @@
     <main>
         <div class="verPerfilContainer">
             <div class="lateralicons">
-                <img src="/images/github_logo.png" alt="Foto" class="perfilFoto">
+                <form method="POST" action="/upload/{{url}}" enctype="multipart/form-data">
+                    <input type="file" name="image">
+                    <input type="submit">
+                </form>
+                <img src="/images/{{ imagem }}" alt="Foto" class="perfilFoto">
                 <div class="perfilIcons">
                     <a href="{{ linkedin }}"><img src="/images/linkedin_logo.png" alt="Linkedin" class="perfilIcon"></a>
                     <a href="{{ github }}"><img src="/images/github_logo.png" alt="Github" class="perfilIcon"></a>

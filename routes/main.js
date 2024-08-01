@@ -81,7 +81,8 @@ router.get("/perfil/:url", (req, res, next) => {
         github: perfil.github,
         email: perfil.email,
         url: perfil.url, 
-        projeto: perfil.projeto
+        projeto: perfil.projeto,
+        imagem: perfil.imagem
     });
 });
 

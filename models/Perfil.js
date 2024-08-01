@@ -24,6 +24,7 @@ module.exports = {
       email: email,
       url: url,
       projeto: projeto,
+      imagem: null,
     };
     profiles.push(profile);
     return profile;
@@ -53,6 +54,14 @@ module.exports = {
       profile.projeto = projeto;
     } else {
       console.log("Perfil não encontrado")
+    }
+  },
+
+  updateImage(url, imagem) {
+    let pos = this.getPositionByUrl(url);
+    if (pos >= 0) {
+      let profile = profiles[pos];
+      profile.imagem = imagem;
     }
   },
 
