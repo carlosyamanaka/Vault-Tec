@@ -40,7 +40,10 @@
         <div>
             <ul class="lista">
                 {{#portfolio}}
-                    <li><a href="/perfil/{{url}}"><img src="/images/github_logo.png" alt="{{nome}}" width="260" height="260"></a></li>
+                    <li>
+                    <a href="/perfil/{{url}}"><img src="/images/github_logo.png" alt="{{nome}}" width="260" height="260"></a>
+                    <a href="/editarperfil/{{url}}">Editar</a>
+                    </li>
                 {{/portfolio}}
             </ul>
         </div>

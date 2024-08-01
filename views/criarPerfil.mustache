@@ -7,11 +7,8 @@
     <link rel="stylesheet" type="text/css" href="/stylesheets/styleform.css">
 </head>
 <body>
- 
-    <a href="/hub?login=1">Voltar para página anterior</a>
-
     <header>
-
+        <a href="/hub?login=1">Voltar para página anterior</a>
     </header>
 
     <main>
@@ -23,38 +20,38 @@
                 <fieldset class="form-perfil">
                     <div class="form-nome">
                         <div class="form-group">
-                            <input type="text" id="nome" name="nome" class="form-input" required>
+                            <input type="text" id="nome" name="nome" class="form-input" value="{{ nome }}" required>
                             <label for="nome" class="form-label">Nome</label>
                         </div>
                         <div class="form-group">
-                            <input type="text" id="sobrenome" name="sobrenome" class="form-input" required>
+                            <input type="text" id="sobrenome" name="sobrenome" class="form-input" value="{{ sobrenome }}" required>
                             <label for="sobrenome" class="form-label">Sobrenome</label>
                         </div>
                     </div>
                     
                     <div class="form-group">
-                        <textarea id="resumo" name="resumo" class="form-input" rows="4" required></textarea>
+                        <textarea id="resumo" name="resumo" class="form-input" rows="4" required>{{ resumo }}</textarea>
                         <label for="resumo" class="form-label">Resumo profissional</label>
                     </div>
                     <div class="form-group">
-                        <textarea id="experiencia" name="experiencia" class="form-input" rows="4" required></textarea>
+                        <textarea id="experiencia" name="experiencia" class="form-input" rows="4" required>{{ experiencia }}</textarea>
                         <label for="experiencia" class="form-label">Experiência</label>
                     </div>
                     
                     <div class="form-group">
-                        <input type="url" id="linkedin" name="linkedin" class="form-input" required>
+                        <input type="url" id="linkedin" name="linkedin" class="form-input" value="{{ linkedin }}" required>
                         <label for="linkedin" class="form-label">Linkedin</label>
                     </div>
                     <div class="form-group">
-                        <input type="url" id="github" name="github" class="form-input" required>
+                        <input type="url" id="github" name="github" class="form-input" value="{{ github }}" required>
                         <label for="github" class="form-label">Github</label>
                     </div>
                     <div class="form-group">
-                        <input type="email" id="email" name="email" class="form-input" required>
+                        <input type="email" id="email" name="email" class="form-input" value="{{ email }}" required>
                         <label for="email" class="form-label">E-mail</label>
                     </div>
                     <div class="form-group">
-                        <input type="text" id="url" name="url" class="form-input" required>
+                        <input type="text" id="url" name="url" class="form-input" value="{{ url }}" required>
                         <label for="url" class="form-label">URL</label>
                     </div>
                 </fieldset>
@@ -63,7 +60,7 @@
             
                 <fieldset class="form-projeto">
                     <div class="form-group">
-                        <textarea rows="30" cols="50" name="projeto" id="projeto"  class="text-area" required></textarea>
+                        <textarea rows="30" cols="50" name="projeto" id="projeto" class="text-area" required>{{ projeto }}</textarea>
                     </div>
                 </fieldset>
                 <div class="center-button">
