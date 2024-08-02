@@ -129,6 +129,11 @@ button:hover {
     padding: 1rem;
     margin: 20px;
     background-color: purple;
+    border-radius: 10px;
+}
+
+a img {
+    padding: 1rem;
 }
 
 footer {
