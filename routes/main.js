@@ -94,15 +94,16 @@ router.get("/", (req, res) => {
   res.render("index", {
     email: req.cookies.email,
     error: error,
-    portfolio: Perfil.listProfiles()
+    portfolio: Perfil.listProfiles(),
+    imagemPerfil: "perfil.png"
+    // imagemPerfil: Perfil.listProfiles().imagem
   });
 });
 
 router.get("/hub", Acesso.estaLogado, (req, res) => {
   res.render("hub", {
     usuario: req.session.user.nome,
-    isAdmin: Usuario.isAdmin(req.session.user),
-    portfolio: Perfil.listProfiles()
+    isAdmin: Usuario.isAdmin(req.session.user)
   });
 });
 

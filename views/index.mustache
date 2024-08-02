@@ -40,11 +40,13 @@
         <div>
             <ul class="lista">
                 {{#portfolio}}
-                    <li>
-                    <a href="/perfil/{{url}}"><img src="/images/github_logo.png" alt="{{nome}}" width="260" height="260"></a>
-                    <a href="/editarperfil/{{url}}">Editar</a>
-                    <a href="/excluirperfil/{{url}}">Excluir</a>
-                    </li>
+                    <div class="cardPortfolio"><li>
+                    <a href="/perfil/{{url}}"><img src="/images/{{ imagemPerfil }}" alt="{{nome}}" width="260" height="260"></a>
+                    <div class="botoesPortfolio">
+                    <a href="/editarperfil/{{url}}" id="botaoEditar">Editar</a>
+                    <a href="/excluirperfil/{{url}}" id="botaoExcluir">Excluir</a>
+                    </div>
+                    </li></div>
                 {{/portfolio}}
             </ul>
         </div>
